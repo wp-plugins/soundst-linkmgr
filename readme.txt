@@ -4,7 +4,7 @@ Donate link: None
 Tags: Sound Strategies, LinkMgr, Link Manager, LinkManager
 Requires at least: 2.0.2
 Tested up to: 3.2
-Stable tag: /trunk/
+Stable tag: 2.0.0
 
 Displays category and link information from the Sound Strategies LinkMgr application as on-page embedded content and as a widget.
 
