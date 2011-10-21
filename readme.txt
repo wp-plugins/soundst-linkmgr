@@ -1,7 +1,7 @@
 === Soundst LinkMgr ===
 Contributors: SoundStrategies
 Donate link: None
-Tags: Sound Strategies, LinkMgr, Link Manager
+Tags: Sound Strategies, LinkMgr, Link Manager, LinkManager
 Requires at least: 2.0.2
 Tested up to: 3.2
 Stable tag: /trunk/
