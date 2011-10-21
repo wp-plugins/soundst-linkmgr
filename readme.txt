@@ -20,7 +20,7 @@ This plugin is intended ONLY for use with the Sound Strategies LinkMgr applicati
 1. Upload the linksmanager folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Adjust the plugin settings
-4. Insert the tag `test<!-- linkmgrmapgen -->` in the desired position on the HTML sitemap page (optional)
+4. Insert the tag `<!-- linkmgrmapgen -->` in the desired position on the HTML sitemap page (optional)
 5. Please refer to the application home page at http://linkmgr.net/ for detailed instructions (login required)
 
 == Frequently Asked Questions ==
