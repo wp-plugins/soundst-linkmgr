@@ -29,13 +29,13 @@ Please refer to the application home page at http://linkmgr.net/
 
 == Screenshots ==
 
-1. **Output** - The LinkMgr output can appear on any page or post and it triggered
+1. **Output** - The LinkMgr output can appear on any page or post.  The page where this data appears is set in the plugin settings.
 
 2. **Settings** - The following settings can be modified:  
-   **LinkMgr login name** - Enter the login name used at LinkMgr.net and click he Apply button
-   **Site** - Use the dropdown box to select the site.  If this does not appear, the LinkMgr login is incorrect.
-   **Page name (slug)** - You must enter the permalink of an existing page name where you want the LinkMgr list to appear.
-   **Permalink settings** - The default setting will simply use the numeric WordPress page ID and the unique LinkMgr category ID. The Tagname setting will use the tagname as it appears in LinkMgr (warning - this setting may create page name conflicts).  The Full Path setting (preferred) will include page name slug followed the tag name (including path).
+   **LinkMgr login name** - Enter the login name used at LinkMgr.net and click he Apply button  
+   **Site** - Use the dropdown box to select the site.  If this does not appear, the LinkMgr login is incorrect.  
+   **Page name (slug)** - You must enter the permalink of an existing page name where you want the LinkMgr list to appear.  
+   **Permalink settings** - The default setting will simply use the numeric WordPress page ID and the unique LinkMgr category ID. The Tagname setting will use the tagname as it appears in LinkMgr (warning - this setting may create page name conflicts).  The Full Path setting (preferred) will include page name slug followed the tag name (including path).  
    
 3. **Widget - Backlink** - This widget displays the reciprocal link information for category selected. A distinct DIV class can be used to format the content.
 
