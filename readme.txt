@@ -54,8 +54,8 @@ This is the initial build that was released to the WordPress community
 
 == Upgrade Notice ==
 
-= 1.9 =
-This is the initial build that was released to the WordPress community
+= 2.0.1 =
+This build includes additional enhancements for the URL structures in the widgets
 
 == Advanced ==
 
