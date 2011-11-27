@@ -3,7 +3,7 @@
  *Plugin Name: SoundSt LinkMgr
  *Plugin URI: http://www.linkmgr.net/
  *Description: Displays category and link information from the Sound Strategies LinkMgr application as on-page embedded content and as a widget.
- *Version: 1.9
+ *Version: 2.0.1
  *Author: Sound Strategies, Inc
  *Author URI: http://www.soundst.com/
  */
