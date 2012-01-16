@@ -3,8 +3,8 @@
  *Plugin Name: SoundSt LinkMgr
  *Plugin URI: http://www.linkmgr.net/
  *Description: Displays category and link information from the Sound Strategies LinkMgr application as on-page embedded content and as a widget.
- *Version: 2.0.1
- *Author: Sound Strategies, Inc
+ *Version: 1.9
+ *Author: By Anton Ruchkin - Sound Strategies
  *Author URI: http://www.soundst.com/
  */
 
@@ -673,7 +673,7 @@ if (isset($aioseop_options)) {
 	add_action('wp_head', 'linksmanager_set_meta'); // set meta
 }
 
-add_filter('the_content', 'linksmanager_set_content', 11 ); // set content
+add_filter('the_content', 'linksmanager_set_content' ); // set content
 
 
 /**
@@ -745,12 +745,12 @@ class LinksManager_Category extends WP_Widget { // Widget for post category
 		name="'.$this->get_field_name('text').'" type="text"
 		value="'.$text.'" /></p>'; // output "text" option
 		echo '<p>Display Options:</p>';
-		echo '<input type="checkbox" name="'.$this->get_field_name('NEP').'" value="enable" '.($NEP == 'enable'?' checked ':'').' /> New entry point<br />';
-		echo '<input type="checkbox" name="'.$this->get_field_name('Shared').'" value="enable" '.($Shared == 'enable'?' checked ':'').' /> Include shared directories<br />';
-		echo '<input type="checkbox" name="'.$this->get_field_name('display_root').'" value="enable" '.($display_root == 'enable'?' checked ':'').' /> Include selected category<br />';
-		echo '<input type="checkbox" name="'.$this->get_field_name('Format').'" value="enable" '.($Format == 'enable'?' checked ':'').' /> Use short format<br /><br />';
+		echo '<input type="checkbox" name="'.$this->get_field_name('NEP').'" value="enable" '.($NEP == 'enable'?' checked ':'').' /> New entry point.<br />';
+		echo '<input type="checkbox" name="'.$this->get_field_name('Shared').'" value="enable" '.($Shared == 'enable'?' checked ':'').' /> Include shared directories.<br />';
+		echo '<input type="checkbox" name="'.$this->get_field_name('display_root').'" value="enable" '.($display_root == 'enable'?' checked ':'').' /> Include root directory.<br />';
+		echo '<input type="checkbox" name="'.$this->get_field_name('Format').'" value="enable" '.($Format == 'enable'?' checked ':'').' /> Use short format.<br /><br />';
 		if ($Directories && count($Directories)>0) { // output "select directory" option
-			echo '<p><label for="'.$this->get_field_id('dir').'"> '._e('Link Category:').'</label>';
+			echo '<p><label for="'.$this->get_field_id('dir').'"> '._e('Root directory:').'</label>';
 			echo '<select class="widefat" id="'.$this->get_field_id('dir').'" name="'.$this->get_field_name('dir').'" >';
 			//echo '<option value="" '.($dir == ''?'selected':'').'>-//-</option>';
 			foreach($Directories as $obj_cat){
@@ -862,7 +862,7 @@ class LinksManager_Links extends WP_Widget { // Widget for post links
 		value="'.$text.'" /></p>'; // output "text" option
 		echo '<p><input type="checkbox" name="'.$this->get_field_name('Format').'" value="enable" '.($Format == 'enable'?' checked ':'').' /> Use short format.</p>';
 		if ($Directories && count($Directories)>0) { // output "select directory" option
-			echo '<p><label for="'.$this->get_field_id('dir').'"> '._e('Link Category:').'</label>';
+			echo '<p><label for="'.$this->get_field_id('dir').'"> '._e('Root directory:').'</label>';
 			echo '<select class="widefat" id="'.$this->get_field_id('dir').'" name="'.$this->get_field_name('dir').'" >';
 			//echo '<option value="" '.($dir == ''?'selected':'').'>-//-</option>';
 			foreach($Directories as $obj_cat){
@@ -938,7 +938,7 @@ class LinksManager_Linkinfo extends WP_Widget { // Widget for post link informat
 		name="'.$this->get_field_name('text').'" type="text"
 		value="'.$text.'" /></p>'; // output "text" option
 		if ($Directories && count($Directories)>0) { // output "select directory" option
-			echo '<p><label for="'.$this->get_field_id('dir').'"> '._e('Link Category:').'</label>';
+			echo '<p><label for="'.$this->get_field_id('dir').'"> '._e('Root directory:').'</label>';
 			echo '<select class="widefat" id="'.$this->get_field_id('dir').'" name="'.$this->get_field_name('dir').'" >';
 			//echo '<option value="" '.($dir == ''?'selected':'').'>-//-</option>';
 			foreach($Directories as $obj_cat){
@@ -1014,7 +1014,7 @@ class LinksManager_Submit extends WP_Widget { // Widget for submit link
 		name="'.$this->get_field_name('text').'" type="text"
 		value="'.$text.'" /></p>'; // output "text" option
 		if ($Directories && count($Directories)>0) { // output "select directory" option
-			echo '<p><label for="'.$this->get_field_id('dir').'"> '._e('Link Category:').'</label>';
+			echo '<p><label for="'.$this->get_field_id('dir').'"> '._e('Root directory:').'</label>';
 			echo '<select class="widefat" id="'.$this->get_field_id('dir').'" name="'.$this->get_field_name('dir').'" >';
 			//echo '<option value="" '.($dir == ''?'selected':'').'>-//-</option>';
 			foreach($Directories as $obj_cat){
@@ -1105,7 +1105,7 @@ function linksmanager_sitemap($content){
 				if ($dom = domxml_open_mem($ResponseData)){
 					$root = $dom->document_element();
 					foreach ($root->get_elements_by_tagname("Sitemap") as $Node){
-						$linkmanager_sitemap_request = base64_decode($Node->get_content());
+						$linkmanager_sitemap_request = base64_decode($Node->nodeValue);
 					}
 				}
 			}else{

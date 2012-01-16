@@ -1,7 +1,7 @@
 <?php
 /*
 Description: Allow Links Manager run inside WP.
-Author: Sound Strategies
+Author: Petr Voinov
 Version: 1.1
 Author URI: http://www.soundst.com/
 */

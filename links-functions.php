@@ -298,4 +298,15 @@ function linksmanager_plugin_part($type = '', $instance = array()){
 		return false;
 	}
 }
-?>
+
+
+if (!function_exists('unstrip_array')){
+	function unstrip_array(&$array){
+		foreach($array as &$val){
+			if(is_array($val)) unstrip_array($val);
+			else $val = stripslashes($val);
+		}
+	}
+}
+
+
