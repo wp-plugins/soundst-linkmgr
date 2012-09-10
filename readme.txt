@@ -1,10 +1,10 @@
 === Soundst LinkMgr ===
 Contributors: SoundStrategies
 Donate link: None
-Tags: Sound Strategies, LinkMgr, Link Manager, LinkManager
+Tags: Sound Strategies, LinkMgr, Link Manager, LinksManager
 Requires at least: 2.0.2
 Tested up to: 3.2
-Stable tag: 2.0.1
+Stable tag: 2.1.0
 
 Displays category and link information from the Sound Strategies LinkMgr application as on-page embedded content and as a widget.
 
@@ -49,13 +49,19 @@ Please refer to the application home page at http://linkmgr.net/ for more detail
 
 == Changelog ==
 
+= 2.1 =
+* Changed description filter (all-in-one-seo-pack plugin)
+
+= 2.0 =
+* Fixed missed function definition (unstrip_array)
+
 = 1.9 =
 This is the initial build that was released to the WordPress community
 
 == Upgrade Notice ==
 
-= 2.0.1 =
-This build includes additional enhancements for the URL structures in the widgets
+= 1.9 =
+This is the initial build that was released to the WordPress community
 
 == Advanced ==
 

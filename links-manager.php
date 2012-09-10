@@ -3,17 +3,19 @@
  *Plugin Name: SoundSt LinkMgr
  *Plugin URI: http://www.linkmgr.net/
  *Description: Displays category and link information from the Sound Strategies LinkMgr application as on-page embedded content and as a widget.
- *Version: 1.9
- *Author: By Anton Ruchkin - Sound Strategies
+ *Version: 2.1
+ *Author: Sound Strategies, Inc
  *Author URI: http://www.soundst.com/
  */
 
 // Set global var
+define('LINKMGR_PLUGIN_DIR', plugin_dir_path( __FILE__ ));
+
 global $linkmanager_url; // path to site: LinkManger system
 $linkmanager_url = 'http://linkmgr.net/';
 
 global $linkmanager_plugin_main_file; // path to main file of this plugin
-$linkmanager_plugin_main_file = 'linksmanager/links-manager.php';
+$linkmanager_plugin_main_file = LINKMGR_PLUGIN_DIR . 'links-manager.php';
 
 global $linkmanager_description; // plugin description
 $linkmanager_description = '';
@@ -25,12 +27,12 @@ global $linkmanager_on; // indicator of linksmanager plugin state
 $linkmanager_on = false;
 
 global $linkmanager_version; // version of this plugin
-$linkmanager_version = '1.9';
+$linkmanager_version = '2.1';
 
 // link require files(functions)
-require_once (WP_PLUGIN_DIR.'/linksmanager/links-functions.php');
+require_once (LINKMGR_PLUGIN_DIR . 'links-functions.php');
 // add rewrite rules
-require_once (WP_PLUGIN_DIR.'/linksmanager/links-manager-rewrite-rules.php');
+require_once (LINKMGR_PLUGIN_DIR . 'links-manager-rewrite-rules.php');
 
 //need to output meta in right way
 global $meta_outputed;
@@ -400,7 +402,7 @@ function linksmanager_set_meta(){
 	if($linkmanager_on){
 		if(isset($aioseop_options)) {
 			if(isset($linkmanager_request["PageDescription"]) && !$meta_outputed) {
-				add_filter('aioseop_description_override', 'linksmanager_get_description');
+				add_filter('aioseop_description', 'linksmanager_get_description');
 			}
 			if(isset($linkmanager_request["PageKeyWords"]) && !$meta_outputed) {
 				add_filter('aioseop_keywords', 'linksmanager_get_keywords');
