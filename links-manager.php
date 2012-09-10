@@ -9,11 +9,13 @@
  */
 
 // Set global var
+define('LINKMGR_PLUGIN_DIR', plugin_dir_path( __FILE__ ));
+
 global $linkmanager_url; // path to site: LinkManger system
 $linkmanager_url = 'http://linkmgr.net/';
 
 global $linkmanager_plugin_main_file; // path to main file of this plugin
-$linkmanager_plugin_main_file = 'linksmanager/links-manager.php';
+$linkmanager_plugin_main_file = LINKMGR_PLUGIN_DIR . 'links-manager.php';
 
 global $linkmanager_description; // plugin description
 $linkmanager_description = '';
@@ -28,9 +30,9 @@ global $linkmanager_version; // version of this plugin
 $linkmanager_version = '2.1';
 
 // link require files(functions)
-require_once (WP_PLUGIN_DIR.'/linksmanager/links-functions.php');
+require_once (LINKMGR_PLUGIN_DIR . 'links-functions.php');
 // add rewrite rules
-require_once (WP_PLUGIN_DIR.'/linksmanager/links-manager-rewrite-rules.php');
+require_once (LINKMGR_PLUGIN_DIR . 'links-manager-rewrite-rules.php');
 
 //need to output meta in right way
 global $meta_outputed;
