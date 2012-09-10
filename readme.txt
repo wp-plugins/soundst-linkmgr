@@ -4,7 +4,7 @@ Donate link: None
 Tags: Sound Strategies, LinkMgr, Link Manager, LinksManager
 Requires at least: 2.0.2
 Tested up to: 3.2
-Stable tag: 2.1.0
+Stable tag: 2.1.1
 
 Displays category and link information from the Sound Strategies LinkMgr application as on-page embedded content and as a widget.
 
@@ -48,6 +48,8 @@ Please refer to the application home page at http://linkmgr.net/
 Please refer to the application home page at http://linkmgr.net/ for more detailed instructions
 
 == Changelog ==
+= 2.1.1 =
+* Updated plugin dir location
 
 = 2.1 =
 * Changed description filter (all-in-one-seo-pack plugin)
