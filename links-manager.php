@@ -8,6 +8,7 @@
  *Author URI: http://www.soundst.com/
  */
 
+
 // Set global var
 define('LINKMGR_PLUGIN_DIR', plugin_dir_path( __FILE__ ));
 
