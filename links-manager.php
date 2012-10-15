@@ -3,7 +3,7 @@
  *Plugin Name: SoundSt LinkMgr
  *Plugin URI: http://www.linkmgr.net/
  *Description: Displays category and link information from the Sound Strategies LinkMgr application as on-page embedded content and as a widget.
- *Version: 2.1.1
+ *Version: 2.1.2
  *Author: Sound Strategies, Inc
  *Author URI: http://www.soundst.com/
  */
@@ -28,7 +28,7 @@ global $linkmanager_on; // indicator of linksmanager plugin state
 $linkmanager_on = false;
 
 global $linkmanager_version; // version of this plugin
-$linkmanager_version = '2.1.1';
+$linkmanager_version = '2.1.2';
 
 // link require files(functions)
 require_once (LINKMGR_PLUGIN_DIR . 'links-functions.php');
@@ -427,14 +427,16 @@ function linksmanager_set_meta(){
 // get linksmanager meta description
 function linksmanager_get_description($description = '') {
 	global $linkmanager_request; // result of plugin post request
-	$description .= ($description != '' && $description[strlen($description)-1] != '.'?'. ':'').linksmanager_parse_meta($linkmanager_request["PageDescription"]);
+	//$description .= ($description != '' && $description[strlen($description)-1] != '.'?'. ':'').linksmanager_parse_meta($linkmanager_request["PageDescription"]);
+	$description = linksmanager_parse_meta($linkmanager_request["PageDescription"]);
 	return $description;
 }
 
 // get linksmanager meta keywords
 function linksmanager_get_keywords($keywords = '') {
 	global $linkmanager_request; // result of plugin post request
-	$keywords .= ($keywords != ''?', ':'').linksmanager_parse_meta($linkmanager_request["PageKeyWords"]);
+	//$keywords .= ($keywords != ''?', ':'').linksmanager_parse_meta($linkmanager_request["PageKeyWords"]);
+	$keywords = linksmanager_parse_meta($linkmanager_request["PageKeyWords"]);
 	return $keywords;
 }
 
