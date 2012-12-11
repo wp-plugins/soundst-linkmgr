@@ -8,7 +8,7 @@ Author URI: http://www.soundst.com/
 
 add_filter('rewrite_rules_array', 'wp_insertLMRewriteRules');
 add_filter('query_vars', 'wp_insertLMRewriteQueryVars');
-add_filter('init', 'flushLMRules');
+add_filter('init', 'flushLMRules', 9999);
 
 // Remember to flush_rules() when adding rules
 function flushLMRules(){
@@ -31,7 +31,7 @@ function wp_insertLMRewriteRules($rules)
 // Adding the 'route' var so that WP recognizes it
 function wp_insertLMRewriteQueryVars($vars)
 {
-    array_push($vars, 'route');
-    return $vars;
+	array_push($vars, 'route');
+	return $vars;
 }
 ?>
