@@ -3,7 +3,7 @@
  *Plugin Name: SoundSt LinkMgr
  *Plugin URI: http://www.linkmgr.net/
  *Description: Displays category and link information from the Sound Strategies LinkMgr application as on-page embedded content and as a widget.
- *Version: 2.1.3
+ *Version: 2.1.4
  *Author: Sound Strategies, Inc
  *Author URI: http://www.soundst.com/
  */
@@ -28,7 +28,7 @@ global $linkmanager_on; // indicator of linksmanager plugin state
 $linkmanager_on = false;
 
 global $linkmanager_version; // version of this plugin
-$linkmanager_version = '2.1.2';
+$linkmanager_version = '2.1.4';
 
 // link require files(functions)
 require_once (LINKMGR_PLUGIN_DIR . 'links-functions.php');
@@ -327,6 +327,9 @@ function linksmanager_main(){
 					foreach ($root->get_elements_by_tagname("PageCSS") as $Node){
 						$linkmanager_request["PageCSS"] = base64_decode($Node->get_content());
 					}
+					foreach ($root->get_elements_by_tagname("DataType") as $Node){
+						$linkmanager_request["DataType"] = $Node->get_content();
+					}
 					foreach ($root->get_elements_by_tagname("direct_output") as $Node){
 						$linkmanager_request["direct_output"] = base64_decode($Node->get_content());
 					}
@@ -352,6 +355,9 @@ function linksmanager_main(){
 					foreach ($objXml->documentElement->getElementsByTagName("PageCSS") as $Node){
 						$linkmanager_request["PageCSS"] = base64_decode($Node->nodeValue);
 					}
+					foreach ($objXml->documentElement->getElementsByTagName("DataType") as $Node){
+						$linkmanager_request["DataType"] = $Node->nodeValue;
+					}
 					foreach ($objXml->documentElement->getElementsByTagName("direct_output") as $Node){
 						$linkmanager_request["direct_output"] = base64_decode($Node->nodeValue);
 					}
@@ -363,6 +369,11 @@ function linksmanager_main(){
 				foreach ($Headers as $Header){
 					header($Header);
 				}
+			}
+			
+			// Some data should be displayed as is (eg. JavaScripts, Captchas)
+			if(isset($linkmanager_request["DataType"]) && isset($linkmanager_request["direct_output"])){
+				linksmanager_output_data($linkmanager_request["direct_output"]);
 			}
 
 			/*// if result not single page... then post it and stop
@@ -484,6 +495,13 @@ function linksmanager_set_content($content){
 	return $content;
 }
 
+// This data should not be displaed as content
+function linksmanager_output_data($SummaryOutput){
+
+		header("Content-length: ".(strlen($SummaryOutput)));
+		echo($SummaryOutput);
+		die();
+}
 
 /**
  * OPTIONS:
@@ -666,14 +684,14 @@ add_action('admin_menu', 'linksmanager_admin_menu'); // plugin option
 
 // Compatibility with all-in-one-seo-pack
 if (isset($aioseop_options)) {
-	add_filter('wp_head', 'linksmanager_main', 1); // plugin basic algoritm
+	add_filter('template_redirect', 'linksmanager_main', 1); // plugin basic algoritm
 	add_filter('wp_head', 'linksmanager_set_title', 2); // set title
 	add_action('wp_head', 'linksmanager_set_meta', 2); // set meta
 	// Add full linkmgr path to canonical url
 	add_filter('aioseop_canonical_url', 'linksmanager_add_canonical');
 } else {
 	//remove_action('wp_head', 'rel_canonical');
-	add_filter('single_post_title', 'linksmanager_main', 1); // plugin basic algoritm
+	add_filter('template_redirect', 'linksmanager_main', 1); // plugin basic algoritm
 	add_filter('single_post_title', 'linksmanager_set_title'); // set title
 	add_action('wp_head', 'linksmanager_set_meta'); // set meta
 }
