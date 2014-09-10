@@ -3,7 +3,7 @@
  *Plugin Name: SoundSt LinkMgr
  *Plugin URI: http://www.linkmgr.net/
  *Description: Displays category and link information from the Sound Strategies LinkMgr application as on-page embedded content and as a widget.
- *Version: 2.1.4
+ *Version: 2.1.5
  *Author: Sound Strategies, Inc
  *Author URI: http://www.soundst.com/
  */
@@ -349,6 +349,9 @@ function linksmanager_main(){
 					foreach ($objXml->documentElement->getElementsByTagName("PageKeyWords") as $Node){
 						$linkmanager_request["PageKeyWords"] = base64_decode($Node->nodeValue);
 					}
+					foreach ($objXml->documentElement->getElementsByTagName("PageRobots") as $Node){
+						$linkmanager_request["PageRobots"] = base64_decode($Node->nodeValue);
+					}
 					foreach ($objXml->documentElement->getElementsByTagName("PageAutor") as $Node){
 						$linkmanager_request["PageAutor"] = base64_decode($Node->nodeValue);
 					}
@@ -419,9 +422,13 @@ function linksmanager_set_meta(){
 			if(isset($linkmanager_request["PageKeyWords"]) && !$meta_outputed) {
 				add_filter('aioseop_keywords', 'linksmanager_get_keywords');
 			}
+			if(isset($linkmanager_request["PageRobots"]) && !$meta_outputed) {
+				add_filter('aioseop_robots_meta', 'linksmanager_get_robots');
+			}
 		} else {
 			if(isset($linkmanager_request["PageDescription"])) echo $linkmanager_request["PageDescription"]."\n";
 			if(isset($linkmanager_request["PageKeyWords"])) echo $linkmanager_request["PageKeyWords"]."\n";
+			if(isset($linkmanager_request["PageRobots"])) echo $linkmanager_request["PageRobots"]."\n";
 			$meta_outputed = true;
 		}
 		
@@ -448,6 +455,13 @@ function linksmanager_get_keywords($keywords = '') {
 	global $linkmanager_request; // result of plugin post request
 	//$keywords .= ($keywords != ''?', ':'').linksmanager_parse_meta($linkmanager_request["PageKeyWords"]);
 	$keywords = linksmanager_parse_meta($linkmanager_request["PageKeyWords"]);
+	return $keywords;
+}
+
+// get linksmanager robots
+function linksmanager_get_robots($keywords = '') {
+	global $linkmanager_request; // result of plugin post request
+	$keywords = linksmanager_parse_meta($linkmanager_request["PageRobots"]);
 	return $keywords;
 }
 
