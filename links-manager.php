@@ -3,7 +3,7 @@
  *Plugin Name: SoundSt LinkMgr
  *Plugin URI: http://www.linkmgr.net/
  *Description: Displays category and link information from the Sound Strategies LinkMgr application as on-page embedded content and as a widget.
- *Version: 2.1.5
+ *Version: 2.1.6
  *Author: Sound Strategies, Inc
  *Author URI: http://www.soundst.com/
  */
@@ -232,6 +232,12 @@ function linksmanager_main(){
 	$linkmanager_on = linksmanager_inside(); // we in linksmanager?
 
 	if($linkmanager_on){
+
+		// wordpress-seo compability
+		if (class_exists('WPSEO_Frontend')) {
+			remove_action('template_redirect', array( WPSEO_Frontend::get_instance(), 'force_rewrite_output_buffer' ), 99999);
+		}
+
 		//---------------Make PHP request------------------
 		$content = ''; // content from LinkManager server
 
@@ -696,6 +702,8 @@ add_action('admin_menu', 'linksmanager_update'); // update plugin
 add_action('install_plugins_pre_plugin-information', 'linksmanager_update_info'); // post update info
 add_action('admin_menu', 'linksmanager_admin_menu'); // plugin option
 
+// wordpress-seo compability
+add_filter( 'wp_title', 'linksmanager_set_title', 16, 2 );
 // Compatibility with all-in-one-seo-pack
 if (isset($aioseop_options)) {
 	add_filter('template_redirect', 'linksmanager_main', 1); // plugin basic algoritm

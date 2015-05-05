@@ -3,8 +3,8 @@ Contributors: SoundStrategies
 Donate link: None
 Tags: Sound Strategies, LinkMgr, Link Manager, LinksManager
 Requires at least: 2.0.2
-Tested up to: 3.2
-Stable tag: 2.1.5
+Tested up to: 4.2.1
+Stable tag: 2.1.6
 
 Displays category and link information from the Sound Strategies LinkMgr application as on-page embedded content and as a widget.
 
@@ -48,6 +48,9 @@ Please refer to the application home page at http://linkmgr.net/
 Please refer to the application home page at http://linkmgr.net/ for more detailed instructions
 
 == Changelog ==
+= 2.1.6 =
+* title compability issue with "Yoast WordPress SEO" plugin (wordpress-seo)
+
 = 2.1.5 =
 * robots meta-tag control addon
 
